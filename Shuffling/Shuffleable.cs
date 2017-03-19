@@ -15,6 +15,8 @@ namespace Shuffling
 
         public static void Shuffle<T>(this IList<T> items, Random random)
         {
+            if (items == null) { throw new ArgumentNullException("items"); }
+
             int last = items.Count - 1;
             for (int i = 0; i < last; i++)
             {
@@ -28,6 +30,8 @@ namespace Shuffling
 
         public static List<T> ImmutableShuffle<T>(this List<T> items)
         {
+            if (items == null) { throw new ArgumentNullException("items"); }
+
             var copy = items.ToList();
             copy.Shuffle();
             return copy;
@@ -35,6 +39,8 @@ namespace Shuffling
 
         public static ImmutableList<T> ImmutableShuffle<T>(this ImmutableList<T> items)
         {
+            if (items == null) { throw new ArgumentNullException("items"); }
+
             var copy = items.ToArray();
             copy.Shuffle();
             return copy.ToImmutableList();
@@ -42,6 +48,8 @@ namespace Shuffling
 
         public static ImmutableArray<T> ImmutableShuffle<T>(this ImmutableArray<T> items)
         {
+            if (items == null) { throw new ArgumentNullException("items"); }
+
             var copy = items.ToArray();
             copy.Shuffle();
             return copy.ToImmutableArray();

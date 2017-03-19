@@ -17,6 +17,13 @@ namespace Shuffling.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ShuffleNull()
+        {
+            Shuffleable.Shuffle<int>(null);
+        }
+
+        [TestMethod]
         public void ShuffleEmptyList()
         {
             var input = new List<int>();
