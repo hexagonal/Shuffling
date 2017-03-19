@@ -30,28 +30,57 @@ namespace Shuffling
 
         public static List<T> ImmutableShuffle<T>(this List<T> items)
         {
+            return items.ImmutableShuffle(new Random());
+        }
+
+        public static List<T> ImmutableShuffle<T>(this List<T> items, Random random)
+        {
             if (items == null) { throw new ArgumentNullException("items"); }
 
             var copy = items.ToList();
-            copy.Shuffle();
+            copy.Shuffle(random);
+            return copy;
+        }
+
+        public static T[] ImmutableShuffle<T>(this T[] items)
+        {
+            return items.ImmutableShuffle(new Random());
+        }
+
+        public static T[] ImmutableShuffle<T>(this T[] items, Random random)
+        {
+            if (items == null) { throw new ArgumentNullException("items"); }
+
+            var copy = items.ToArray();
+            copy.Shuffle(random);
             return copy;
         }
 
         public static ImmutableList<T> ImmutableShuffle<T>(this ImmutableList<T> items)
         {
+            return items.ImmutableShuffle(new Random());
+        }
+
+        public static ImmutableList<T> ImmutableShuffle<T>(this ImmutableList<T> items, Random random)
+        {
             if (items == null) { throw new ArgumentNullException("items"); }
 
             var copy = items.ToArray();
-            copy.Shuffle();
+            copy.Shuffle(random);
             return copy.ToImmutableList();
         }
 
         public static ImmutableArray<T> ImmutableShuffle<T>(this ImmutableArray<T> items)
         {
+            return items.ImmutableShuffle(new Random());
+        }
+
+        public static ImmutableArray<T> ImmutableShuffle<T>(this ImmutableArray<T> items, Random random)
+        {
             if (items == null) { throw new ArgumentNullException("items"); }
 
             var copy = items.ToArray();
-            copy.Shuffle();
+            copy.Shuffle(random);
             return copy.ToImmutableArray();
         }
     }
